@@ -1,0 +1,153 @@
+// LOCALHOST
+### Get all manufacturues.
+GET http://localhost:8080/manufacturers 
+
+### Get manufacturer by ID
+GET http://localhost:8080/manufacturers/634afbc59019334558fbeb64
+
+### Create a new manufacturer.
+POST http://localhost:8080/manufacturers HTTP/1.1
+content-type: application/json
+
+{
+  "name": "General Motors Co.",
+  "founded": "September 16, 1908",
+  "president": "Mary Barra",
+  "origin": "United States",
+  "stockSymbol": "GM",
+  "revenue": "$127 billion",
+  "productionPerYear": "6.2 million",
+}
+
+### Update the existing manufacturer.
+PUT http://localhost:8080/manufacturers/634afd929019334558fbeb66 HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Daimler AG",
+  "founded": "November 17, 1998",
+  "president": "Ola Kallenius",
+  "origin": "Germany",
+  "stockSymbol": "MBGYY",
+  "revenue": "$4.009 billion",
+  "productionPerYear": "2.6 million",
+}
+
+### Delete the current manufacturer.
+DELETE http://localhost:8080/manufacturers/634afd929019334558fbeb66 HTTP/1.1
+content-type: application/json
+
+
+// PRODUCTION
+### GET all manufacturers.
+GET https://cse341-personal-project.onrender.com/manufacturers
+
+### GET manufacturer by ID.
+GET https://cse341-personal-project.onrender.com/manufacturers/634afbc59019334558fbeb64
+
+### POST a new manufacturer to db.
+POST https://cse341-personal-project.onrender.com/manufacturers HTTP/1.1
+content-type: application/json
+
+{
+  "name": "General Motors Co.",
+  "founded": "September 16, 1908",
+  "president": "Mary Barra",
+  "origin": "United States",
+  "stockSymbol": "GM",
+  "revenue": "$127 billion",
+  "productionPerYear": "6.2 million",
+}
+
+### PUT new content to manufacturer.
+PUT https://cse341-personal-project.onrender.com/manufacturers/634afd929019334558fbeb66 HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Daimler AG",
+  "founded": "November 17, 1998",
+  "president": "Ola Kallenius",
+  "origin": "Germany",
+  "stockSymbol": "MBGYY",
+  "revenue": "$4.009 billion",
+  "productionPerYear": "2.6 million",
+}
+
+### DELETE manufacturer by ID.
+DELETE https://cse341-personal-project.onrender.com/manufacturers/634afd929019334558fbeb66
+
+
+
+// MODELS //
+
+// LOCALHOST
+### Get all models.
+GET http://localhost:8080/models 
+
+### Get model by ID
+GET http://localhost:8080/models/634b04a89019334558fbeb6a
+
+### Create a new model.
+POST http://localhost:8080/models HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Ford F-350",
+  "bodyStyle": "Full-size pickup truck",
+  "price": "From $45,000",
+  "zeroToSixty": "8.2 seconds",
+  "rating": "8.2/10",
+}
+
+### Update the existing model.
+PUT http://localhost:8080/models/634b04a89019334558fbeb6a HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Ford Bronco",
+  "bodyStyle": "SUV",
+  "price": "From $45,000",
+  "zeroToSixty": "6.7 seconds",
+  "rating": "9.8/10",
+}
+
+### Delete the current model.
+DELETE http://localhost:8080/models/634b04a89019334558fbeb6a HTTP/1.1
+content-type: application/json
+
+
+// PRODUCTION
+### GET all models.
+GET https://cse341-personal-project.onrender.com/models
+
+### GET model by ID.
+GET https://cse341-personal-project.onrender.com/models/634b04a89019334558fbeb6a
+
+### POST a new model to db.
+POST https://cse341-personal-project.onrender.com/models HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Ford F-350",
+  "bodyStyle": "Full-size pickup truck",
+  "price": "From $45,000",
+  "zeroToSixty": "8.2 seconds",
+  "rating": "8.2/10",
+}
+
+### PUT new content to model.
+PUT https://cse341-personal-project.onrender.com/models/634b04a89019334558fbeb6a HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Ford Bronco",
+  "bodyStyle": "SUV",
+  "price": "From $45,000",
+  "zeroToSixty": "6.7 seconds",
+  "rating": "9.8/10",
+}
+
+### DELETE manufacturer by ID.
+DELETE https://cse341-personal-project.onrender.com/models/634b04a89019334558fbeb6a
+
+
