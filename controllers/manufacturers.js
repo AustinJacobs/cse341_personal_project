@@ -5,32 +5,37 @@ const ObjectId = require('mongodb').ObjectId;
 const database_name = process.env.DB_NAME;
 
 const getAllManufacturers = async (req, res, next) => {
-  const data = await mongodb
+  mongodb
     .fetchDb()
     .db(database_name)
     .collection('VehicleManufacturers')
-    .find();
-  data.toArray().then((documents) => {
-    res.setHeader('Content-Type', 'application/json');
-    if (res) {
-      res.json(documents);
-    }
-  });
+    .find()
+    .toArray((error, documents) => {
+      if (error) {
+        res.status(400).json({ message: error });
+      }
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(documents);
+    });
 };
 
 const getSingleManufacturer = async (req, res, next) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Check the ID and make sure it is a valid ID.');
+  }
   const userId = new ObjectId(req.params.id);
-  const data = await mongodb
+  mongodb
     .fetchDb()
     .db(database_name)
     .collection('VehicleManufacturers')
-    .find({ _id: userId });
-  data.toArray().then((documents) => {
-    res.setHeader('Content-Type', 'application/json');
-    if (res) {
-      res.json(documents[0]);
-    }
-  });
+    .find({ _id: userId })
+    .toArray((error, result) => {
+      if (error) {
+        res.status(400).json({ message: error });
+      }
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(result[0]);
+    });
 };
 
 const createManufacturer = async (req, res) => {
@@ -58,6 +63,9 @@ const createManufacturer = async (req, res) => {
 };
 
 const updateManufacturer = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Check the ID and make sure it is a valid ID.');
+  }
   const userId = new ObjectId(req.params.id);
   const manufacturer = {
     name: req.body.name,
@@ -79,11 +87,16 @@ const updateManufacturer = async (req, res) => {
   } else {
     res
       .status(500)
-      .json(response.error || 'An error ocurred during the manufacturer update.');
+      .json(
+        response.error || 'An error ocurred during the manufacturer update.'
+      );
   }
 };
 
 const deleteManufacturer = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Check the ID and make sure it is a valid ID.');
+  }
   const userId = new ObjectId(req.params.id);
   const response = await mongodb
     .fetchDb()

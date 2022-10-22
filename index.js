@@ -18,6 +18,14 @@ app
   })
   .use('/', require('./routes'));
 
+// catch the error when invalid ID is input.
+process.on('uncaughtException', (err, origin) => {
+  console.log(
+    process.stderr.fd,
+    `Caught exception: ${err}\n` + `Exception origin: ${origin}`
+  );
+});
+
 mongodb.connectDb((e, mongodb) => {
   if (e) {
     console.log(e);
