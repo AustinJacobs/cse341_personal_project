@@ -40,10 +40,6 @@ app.get('/auth/failure', (req, res) => {
   res.send('Authentication Failed');
 });
 
-// app.get('/protected', isLoggedIn, (req, res) => {
-//   res.send(`Hello! ${req.user.displayName}`);
-// });
-
 app.get('/logout', (req, res, next) => {
   req.logout(function (err) {
     if (err) {
@@ -55,7 +51,6 @@ app.get('/logout', (req, res, next) => {
 });
 
 app
-  // .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
   .use(cors())
   .use(bodyParser.json())
   .use((req, res, next) => {
